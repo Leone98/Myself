@@ -9,6 +9,7 @@ body {
   background-repeat: no-repeat;
   background-position: top center;
   background-size: cover;
+  height: 100vh;
 }
 
 body * {
@@ -31,7 +32,7 @@ body * {
   --bg-url: url(./assets/Background.jpg);
   --border-color: rgba(0, 0, 0, 0.3);
   --surface-color: rgba(0, 0, 0, 0.05);
-  --links-hover-color: rgba(255, 255, 255, 0.02);
+  --links-hover-color: rgba(255, 255, 255, 0.1);
   --social-hover-color: rgba(0, 0, 0, 0.1);
   --url-switch-bg: url(./assets/sun.svg);
 }
@@ -39,7 +40,8 @@ body * {
 /* height: 712px; */
 
 #container {
-  width: 360px;
+  width: 100%;
+  max-width: 588px;
   margin: 56px auto auto;
 
   padding: 0px 24px;
@@ -79,11 +81,16 @@ body * {
   top: 50%;
   left: 0;
   transform: translateY(-50%);
+
+  animation: slide-back 0.4s;
+}
+
+#switch button:hover {
+  outline: 8px solid var(--social-hover-color);
 }
 
 .light #switch button {
-  right: 0;
-  left: initial;
+  animation: slide-in 0.4s forwards;
 }
 
 #switch span {
@@ -124,7 +131,7 @@ ul li a {
 
 ul li a:hover {
   background-color: var(--links-hover-color);
-  border: 1.0px solid var(--project-color);
+  border: 1px solid var(--project-color);
 }
 
 #social-links {
@@ -153,4 +160,24 @@ ul li a:hover {
   padding: 24px 0px;
   text-align: center;
   font-weight: 400;
+}
+
+/*animation*/
+
+@keyframes slide-in {
+  from {
+    left: 0;
+  }
+  to {
+    left: 50%;
+  }
+}
+
+@keyframes slide-back {
+  from {
+    left: 50%;
+  }
+  to {
+    left: 0;
+  }
 }
